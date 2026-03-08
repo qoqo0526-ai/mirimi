@@ -1,0 +1,330 @@
+/* === Reset & Base === */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --color-bg: #0f1419;
+  --color-surface: #1a2332;
+  --color-surface-elevated: #243044;
+  --color-accent: #3b82f6;
+  --color-accent-hover: #60a5fa;
+  --color-success: #22c55e;
+  --color-success-bg: rgba(34, 197, 94, 0.15);
+  --color-danger: #ef4444;
+  --color-text: #e7eaef;
+  --color-text-muted: #94a3b8;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+}
+
+body {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+/* === Ad Spaces === */
+.ad-space {
+  background: var(--color-surface);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 1rem;
+}
+
+.ad-bottom {
+  border-bottom: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.ad-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80px;
+  background: var(--color-surface-elevated);
+  border-radius: var(--radius-sm);
+  border: 1px dashed rgba(148, 163, 184, 0.3);
+}
+
+.ad-placeholder span {
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+}
+
+/* === Main Container === */
+.container {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
+}
+
+/* === Calculator Card === */
+.calculator-card {
+  background: var(--color-surface);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+  box-shadow: var(--shadow);
+}
+
+.input-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.input-row-single {
+  grid-template-columns: 1fr;
+}
+
+.input-group label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  font-size: 1rem;
+  background: var(--color-surface-elevated);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-sm);
+  color: var(--color-text);
+  transition: border-color 0.2s;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+.input-group input::placeholder {
+  color: var(--color-text-muted);
+  opacity: 0.6;
+}
+
+.btn-calculate {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  background: var(--color-accent);
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 0.5rem;
+}
+
+.btn-calculate:hover {
+  background: var(--color-accent-hover);
+}
+
+.btn-calculate:active {
+  transform: scale(0.98);
+}
+
+/* === Results === */
+.results {
+  margin-top: 2rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.results.hidden {
+  display: none;
+}
+
+.results h2 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+  color: var(--color-text-muted);
+}
+
+/* Comparison Card */
+.comparison-card {
+  background: var(--color-surface-elevated);
+  border-radius: var(--radius-sm);
+  padding: 1.25rem 1.25rem 1.5rem;
+}
+
+.comparison-card h2 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--color-text-muted);
+}
+
+/* Result Cards */
+.result-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.result-card {
+  background: var(--color-surface-elevated);
+  border-radius: var(--radius-sm);
+  border: 2px solid transparent;
+  overflow: hidden;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.result-card.cheaper {
+  border-color: var(--color-success);
+  background: var(--color-success-bg);
+  box-shadow: 0 0 0 1px var(--color-success);
+}
+
+.result-card .card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  background: rgba(0, 0, 0, 0.2);
+  color: var(--color-text);
+}
+
+.result-card.cheaper .card-header {
+  background: rgba(34, 197, 94, 0.2);
+  color: var(--color-success);
+}
+
+.result-card .card-body {
+  padding: 1rem;
+}
+
+.badge {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  color: var(--color-text-muted);
+}
+
+.badge.cheaper-badge {
+  border-color: var(--color-success);
+  color: var(--color-success);
+  background: rgba(34, 197, 94, 0.15);
+}
+
+.result-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  font-size: 0.9rem;
+}
+
+.result-row .label {
+  color: var(--color-text-muted);
+}
+
+.result-row .value {
+  font-weight: 600;
+}
+
+.result-row.total-row {
+  padding-top: 0.75rem;
+  margin-top: 0.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.result-row.total-row .value {
+  font-size: 1.1rem;
+}
+
+.result-card.cheaper .result-row.total-row .value {
+  color: var(--color-success);
+}
+
+/* Result Summary */
+.result-summary {
+  background: var(--color-surface-elevated);
+  border-radius: var(--radius-sm);
+  padding: 1.25rem;
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+}
+
+.summary-item .label {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+}
+
+.summary-item .value {
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+.summary-savings .value {
+  color: var(--color-success);
+  font-size: 1.2rem;
+}
+
+/* === Mobile Adjustments === */
+@media (max-width: 480px) {
+  .container {
+    padding: 1.5rem 1rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .calculator-card {
+    padding: 1.25rem;
+  }
+
+  .input-row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .result-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .ad-placeholder {
+    min-height: 60px;
+  }
+}
