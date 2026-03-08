@@ -42,6 +42,13 @@
           </div>
         </div>
 
+        <div class="location-row">
+          <button type="button" id="geo-button" class="btn-location">현재 위치 가져오기</button>
+          <p id="location-info" class="location-info">
+            현재 위치를 가져오려면 버튼을 눌러주세요.
+          </p>
+        </div>
+
         <div class="input-row input-row-single">
           <div class="input-group">
             <label for="efficiency">차량 연비 (km/L)</label>
@@ -56,7 +63,10 @@
           </div>
         </div>
 
-        <button type="submit" class="btn-calculate">계산하기</button>
+        <div class="button-row">
+          <button type="submit" class="btn-calculate">계산하기</button>
+          <button type="button" id="reset-button" class="btn-reset">입력값 초기화</button>
+        </div>
       </form>
 
       <div id="results" class="results hidden">
@@ -117,6 +127,10 @@
               <span id="savings" class="value">-</span>
             </div>
           </div>
+
+          <div class="chart-container">
+            <canvas id="cost-chart"></canvas>
+          </div>
         </div>
       </div>
     </section>
@@ -129,6 +143,7 @@
     </div>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
